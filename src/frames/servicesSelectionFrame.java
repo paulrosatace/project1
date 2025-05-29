@@ -5,24 +5,44 @@
 package frames;
 
 import JDBC.jdbcConnection;
+import java.awt.CardLayout;
+import java.awt.Component;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
-
+import frames.ComboBoxMultiSelection;
+import javax.swing.JButton;
 /**
  *
  * @author ADMIN
  */
 public class servicesSelectionFrame extends javax.swing.JFrame {
-
+ 
     /**
      * Creates new form servicesSelectionFrame
      */
+//    private ComboBoxMultiSelection servicesComboBox;
+    private homeFrame mainFrame; // Reference to the main frame
+    private JButton confirmButton;
+    private CardLayout cardLayout;
+     
     public servicesSelectionFrame() {
         initComponents();
+        cardLayout = (CardLayout) jPanel5.getLayout();
+        cardLayout.show(jPanel5, "groomingCard"); 
     }
+    
+    public servicesSelectionFrame(homeFrame mainFrame) {
+        this.mainFrame = mainFrame; // Set the reference
+        initComponents();
+        // Initialize CardLayout and show default panel
+        cardLayout = (CardLayout) jPanel5.getLayout();
+        cardLayout.show(jPanel5, "groomingCard"); // Show grooming panel by default
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -56,7 +76,6 @@ public class servicesSelectionFrame extends javax.swing.JFrame {
         jCheckBox5 = new javax.swing.JCheckBox();
         jCheckBox6 = new javax.swing.JCheckBox();
         jCheckBox7 = new javax.swing.JCheckBox();
-        jButton2 = new javax.swing.JButton();
         servicesComboBox = new frames.ComboBoxMultiSelection<>(new String[]{
             "Full Grooming",
             "Bath Only",
@@ -74,7 +93,6 @@ public class servicesSelectionFrame extends javax.swing.JFrame {
         jTextField4 = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
         jTextField9 = new javax.swing.JTextField();
-        jButton10 = new javax.swing.JButton();
         dayCareServicesPanel = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
         jTextField10 = new javax.swing.JTextField();
@@ -82,33 +100,29 @@ public class servicesSelectionFrame extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         jCheckBox11 = new javax.swing.JCheckBox();
         jCheckBox12 = new javax.swing.JCheckBox();
-        jButton11 = new javax.swing.JButton();
         trainingServicesPanel = new javax.swing.JPanel();
         jCheckBox13 = new javax.swing.JCheckBox();
         jCheckBox14 = new javax.swing.JCheckBox();
         jCheckBox15 = new javax.swing.JCheckBox();
         jCheckBox16 = new javax.swing.JCheckBox();
         jCheckBox17 = new javax.swing.JCheckBox();
-        jButton12 = new javax.swing.JButton();
         miscellaneousServicesPanel = new javax.swing.JPanel();
         jCheckBox18 = new javax.swing.JCheckBox();
         jCheckBox19 = new javax.swing.JCheckBox();
         jCheckBox20 = new javax.swing.JCheckBox();
         jCheckBox21 = new javax.swing.JCheckBox();
         jCheckBox22 = new javax.swing.JCheckBox();
-        jButton13 = new javax.swing.JButton();
         boardingServicesPanel = new javax.swing.JPanel();
         jCheckBox23 = new javax.swing.JCheckBox();
         jCheckBox24 = new javax.swing.JCheckBox();
         jCheckBox25 = new javax.swing.JCheckBox();
         jLabel21 = new javax.swing.JLabel();
         jTextField11 = new javax.swing.JTextField();
-        jButton14 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        addButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(700, 450));
         setResizable(false);
 
         jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -322,21 +336,6 @@ public class servicesSelectionFrame extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(20, 20, 0, 0);
         groomingServicesPanel.add(jCheckBox7, gridBagConstraints);
 
-        jButton2.setText("Add");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 7;
-        gridBagConstraints.ipadx = 88;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(12, 61, 17, 0);
-        groomingServicesPanel.add(jButton2, gridBagConstraints);
-
         servicesComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Full Grooming", "Bath Only", "Nail Clipping", "Ear Cleaning", "Teeth Brushing", "De-shedding Treatment", "Flea/Tick Treatment" }));
         servicesComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -454,16 +453,6 @@ public class servicesSelectionFrame extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(14, 60, 0, 0);
         petWalkingServicesPanel.add(jTextField9, gridBagConstraints);
 
-        jButton10.setText("Add");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.ipadx = 38;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 20, 16, 0);
-        petWalkingServicesPanel.add(jButton10, gridBagConstraints);
-
         jPanel5.add(petWalkingServicesPanel, "card3");
 
         dayCareServicesPanel.setBackground(new java.awt.Color(102, 102, 102));
@@ -545,16 +534,6 @@ public class servicesSelectionFrame extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(20, 20, 0, 60);
         dayCareServicesPanel.add(jCheckBox12, gridBagConstraints);
 
-        jButton11.setText("Add");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.ipadx = 28;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 0, 17, 0);
-        dayCareServicesPanel.add(jButton11, gridBagConstraints);
-
         jPanel5.add(dayCareServicesPanel, "card4");
 
         trainingServicesPanel.setBackground(new java.awt.Color(102, 102, 102));
@@ -619,14 +598,6 @@ public class servicesSelectionFrame extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 20, 0, 40);
         trainingServicesPanel.add(jCheckBox17, gridBagConstraints);
-
-        jButton12.setText("Add");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(40, 20, 27, 0);
-        trainingServicesPanel.add(jButton12, gridBagConstraints);
 
         jPanel5.add(trainingServicesPanel, "card5");
 
@@ -696,15 +667,6 @@ public class servicesSelectionFrame extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(20, 10, 0, 22);
         miscellaneousServicesPanel.add(jCheckBox22, gridBagConstraints);
 
-        jButton13.setText("Add");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.ipadx = 48;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(40, 20, 27, 0);
-        miscellaneousServicesPanel.add(jButton13, gridBagConstraints);
-
         jPanel5.add(miscellaneousServicesPanel, "card6");
 
         boardingServicesPanel.setBackground(new java.awt.Color(102, 102, 102));
@@ -770,16 +732,6 @@ public class servicesSelectionFrame extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(30, 10, 0, 0);
         boardingServicesPanel.add(jTextField11, gridBagConstraints);
 
-        jButton14.setText("Add");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.ipadx = 68;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(28, 40, 27, 0);
-        boardingServicesPanel.add(jButton14, gridBagConstraints);
-
         jPanel5.add(boardingServicesPanel, "card7");
 
         jPanel4.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, -1, 140));
@@ -792,6 +744,14 @@ public class servicesSelectionFrame extends javax.swing.JFrame {
             }
         });
         jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(612, 153, 70, 20));
+
+        addButton.setText("Add");
+        addButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addButtonActionPerformed(evt);
+            }
+        });
+        jPanel4.add(addButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 150, 160, -1));
 
         jPanel3.add(jPanel4);
 
@@ -813,7 +773,7 @@ public class servicesSelectionFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void groomingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_groomingButtonActionPerformed
-
+//        cardLayout.show(jPanel5, "groomingCard");
         groomingServicesPanel.setVisible(true);
         boardingServicesPanel.setVisible(false);
         petWalkingServicesPanel.setVisible(false);
@@ -826,7 +786,7 @@ public class servicesSelectionFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_groomingButtonActionPerformed
 
     private void boardingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardingButtonActionPerformed
-
+//          cardLayout.show(jPanel5, "boardingCard");
         groomingServicesPanel.setVisible(false);
         boardingServicesPanel.setVisible(true);
         petWalkingServicesPanel.setVisible(false);
@@ -839,7 +799,7 @@ public class servicesSelectionFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_boardingButtonActionPerformed
 
     private void petwalkingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_petwalkingButtonActionPerformed
-
+//        cardLayout.show(jPanel5, "petWalkingCard");
         groomingServicesPanel.setVisible(false);
         boardingServicesPanel.setVisible(false);
         petWalkingServicesPanel.setVisible(true);
@@ -852,16 +812,8 @@ public class servicesSelectionFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_petwalkingButtonActionPerformed
 
     private void trainingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trainingButtonActionPerformed
-
-        //        CardLayout cl = (CardLayout) trainingServicesPanel.getLayout();
-        //        cl.show(trainingServicesPanel, "");
-        //        groomingServicesPanel.setVisible(false);
-        //        boardingServicesPanel.setVisible(false);
-        //        petWalkingServicesPanel.setVisible(false);
-        //        dayCareServicesPanel.setVisible(false);
-        //        trainingServicesPanel.setVisible(true);
-        //        miscellaneousServicesPanel.setVisible(false);
-        trainingServicesPanel.getParent().setComponentZOrder(trainingServicesPanel, 4);
+//          cardLayout.show(jPanel5, "trainingCard");
+//        trainingServicesPanel.getParent().setComponentZOrder(trainingServicesPanel, 4);
         groomingServicesPanel.setVisible(false);
         boardingServicesPanel.setVisible(false);
         petWalkingServicesPanel.setVisible(false);
@@ -870,23 +822,10 @@ public class servicesSelectionFrame extends javax.swing.JFrame {
         miscellaneousServicesPanel.setVisible(false);
         trainingServicesPanel.repaint();
         trainingServicesPanel.revalidate();
-        // Optional: Only if servicesSelectionPanel is the parent of these panels
-        // servicesSelectionPanel.getParent().setComponentZOrder(boardingServicesPanel, 6); // Keep this if necessary for your layout
-        // Force repaint of the visible panel
-
-        // Force repaint of the parent container that holds all these panels
-        // Replace 'parentContainerOfServicePanels' with the actual JPanel that holds
-        // groomingServicesPanel, boardingServicesPanel, etc.
-        // Example: If they are all on 'servicesSelectionPanel' (the pop-up panel), then:
-        //        if (trainingServicesPanel.getParent() != null) {
-            //            trainingServicesPanel.getParent().repaint();
-            //        }
-        // If the issue persists, as a last resort, repaint the entire frame:
-        // this.repaint(); // 'this' refers to homeFrame
     }//GEN-LAST:event_trainingButtonActionPerformed
 
     private void daycareButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_daycareButtonActionPerformed
-
+//          cardLayout.show(jPanel5, "dayCareCard");
         groomingServicesPanel.setVisible(false);
         boardingServicesPanel.setVisible(false);
         petWalkingServicesPanel.setVisible(false);
@@ -899,7 +838,7 @@ public class servicesSelectionFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_daycareButtonActionPerformed
 
     private void miscellaneousButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miscellaneousButtonActionPerformed
-
+//        cardLayout.show(jPanel5, "miscellaneousCard"); 
         groomingServicesPanel.setVisible(false);
         boardingServicesPanel.setVisible(false);
         petWalkingServicesPanel.setVisible(false);
@@ -911,21 +850,73 @@ public class servicesSelectionFrame extends javax.swing.JFrame {
         miscellaneousServicesPanel.repaint();
     }//GEN-LAST:event_miscellaneousButtonActionPerformed
 
-    private void jCheckBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox4ActionPerformed
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+       List<String> selectedServices = new ArrayList<>();
+        Component currentCard = null;
 
-    private void jCheckBox6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox6ActionPerformed
+        // Find the currently visible card
+        for (Component comp : jPanel5.getComponents()) {
+            if (comp.isVisible()) {
+                currentCard = comp;
+                break;
+            }
+        }
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        if (currentCard == groomingServicesPanel) {
+            if (jCheckBox1.isSelected()) selectedServices.add(jCheckBox1.getText());
+            if (jCheckBox2.isSelected()) selectedServices.add(jCheckBox2.getText());
+            if (jCheckBox3.isSelected()) selectedServices.add(jCheckBox3.getText());
+            if (jCheckBox4.isSelected()) selectedServices.add(jCheckBox4.getText());
+            if (jCheckBox5.isSelected()) selectedServices.add(jCheckBox5.getText());
+            if (jCheckBox6.isSelected()) selectedServices.add(jCheckBox6.getText());
+            if (jCheckBox7.isSelected()) selectedServices.add(jCheckBox7.getText());
+        } else if (currentCard == petWalkingServicesPanel) {
+            if (jCheckBox8.isSelected()) selectedServices.add(jCheckBox8.getText());
+            if (jCheckBox9.isSelected()) selectedServices.add(jCheckBox9.getText());
+            if (jCheckBox10.isSelected()) selectedServices.add(jCheckBox10.getText());
+            // You might also want to add text from jTextField4, jTextField9 if valid
+            // Example: String location = jTextField4.getText();
+            // Example: String days = jTextField9.getText();
+        } else if (currentCard == dayCareServicesPanel) {
+            if (jCheckBox11.isSelected()) selectedServices.add(jCheckBox11.getText());
+            if (jCheckBox12.isSelected()) selectedServices.add(jCheckBox12.getText());
+            // You might also want to add text from jTextField10, jComboBox1 if valid
+            // Example: String location = jTextField10.getText();
+            // Example: String frequency = jComboBox1.getSelectedItem().toString();
+        } else if (currentCard == trainingServicesPanel) {
+            if (jCheckBox13.isSelected()) selectedServices.add(jCheckBox13.getText());
+            if (jCheckBox14.isSelected()) selectedServices.add(jCheckBox14.getText());
+            if (jCheckBox15.isSelected()) selectedServices.add(jCheckBox15.getText());
+            if (jCheckBox16.isSelected()) selectedServices.add(jCheckBox16.getText());
+            if (jCheckBox17.isSelected()) selectedServices.add(jCheckBox17.getText());
+        } else if (currentCard == miscellaneousServicesPanel) {
+            if (jCheckBox18.isSelected()) selectedServices.add(jCheckBox18.getText());
+            if (jCheckBox19.isSelected()) selectedServices.add(jCheckBox19.getText());
+            if (jCheckBox20.isSelected()) selectedServices.add(jCheckBox20.getText());
+            if (jCheckBox21.isSelected()) selectedServices.add(jCheckBox21.getText());
+            if (jCheckBox22.isSelected()) selectedServices.add(jCheckBox22.getText());
+        } else if (currentCard == boardingServicesPanel) {
+            if (jCheckBox23.isSelected()) selectedServices.add(jCheckBox23.getText());
+            if (jCheckBox24.isSelected()) selectedServices.add(jCheckBox24.getText());
+            if (jCheckBox25.isSelected()) selectedServices.add(jCheckBox25.getText());
+            // You might also want to add text from jTextField11 if valid
+            // Example: String duration = jTextField11.getText();
+        }
 
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void servicesComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_servicesComboBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_servicesComboBoxActionPerformed
+        if (selectedServices.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No services were selected for the current category.", "Information", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            // Pass selected services back to homeFrame if a reference exists
+            if (mainFrame != null) {
+//                mainFrame.updateServicesTextfield(selectedServices); // Assuming homeFrame has this method
+                 String joinedServices = String.join(", ", selectedServices);
+                 mainFrame.setSelectedServices(joinedServices);
+            }
+            JOptionPane.showMessageDialog(this, "Selected services added: \n" + String.join("\n", selectedServices), "Success", JOptionPane.INFORMATION_MESSAGE);
+            dispose(); // Close this frame
+        }
+   
+    }//GEN-LAST:event_addButtonActionPerformed
 
     private void jCheckBox8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox8ActionPerformed
         // TODO add your handling code here:
@@ -948,20 +939,30 @@ public class servicesSelectionFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jCheckBox21ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-//        int confirm = JOptionPane.showConfirmDialog(
-//        this, // 'this' refers to your homeFrame instance
-//        "Are you sure you want to exit?",
-//        "Confirm Exit",
-//        JOptionPane.YES_NO_OPTION,
-//        JOptionPane.QUESTION_MESSAGE
-//    );
+//    List<String> selectedServices = servicesComboBox.getSelectedItems(); // or however you're storing selected services
+//    String joinedServices = String.join(", ", selectedServices);
 //
-//    if (confirm == JOptionPane.YES_OPTION) {
-//        servicesSelectionFrame v = new servicesSelectionFrame();
-////        v.setVisible(false);
-//}
-     this.setVisible(false); 
+//    if (mainFrame != null) {
+//        mainFrame.setSelectedServices(joinedServices);
+//    }
+        List<String> selectedServices = multiSelectionComboBox.getSelectedItems();
+        String joinedServices = String.join(", ", selectedServices);
+        mainFrame.setSelectedServices(joinedServices);
+        dispose(); // close the selection frame
+        this.dispose(); // Close the selection frame
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jCheckBox6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox6ActionPerformed
+
+    private void jCheckBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox4ActionPerformed
+
+    private void servicesComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_servicesComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_servicesComboBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -999,6 +1000,7 @@ public class servicesSelectionFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addButton;
     private javax.swing.JButton boardingButton;
     private javax.swing.JPanel boardingServicesPanel;
     private javax.swing.JPanel dayCareServicesPanel;
@@ -1006,12 +1008,6 @@ public class servicesSelectionFrame extends javax.swing.JFrame {
     private javax.swing.JButton groomingButton;
     private javax.swing.JPanel groomingServicesPanel;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton2;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox10;
     private javax.swing.JCheckBox jCheckBox11;
@@ -1064,3 +1060,4 @@ public class servicesSelectionFrame extends javax.swing.JFrame {
     private javax.swing.JPanel trainingServicesPanel;
     // End of variables declaration//GEN-END:variables
 }
+

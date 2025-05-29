@@ -222,63 +222,7 @@
                           <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;    },&#xa;    new String [] {&#xa;        &quot;Client Name&quot;, &quot;Address&quot;, &quot;Email&quot;, &quot;Contact&quot;, &quot;Pet Name&quot;, &quot;Species&quot;, &quot;Breed&quot;, &quot;Service/s&quot;, &quot;Schedule&quot;, &quot;Assistant&quot;, &quot;Total Bill&quot;, &quot;ID&quot; // Added Address and ID&#xa;    }&#xa;) {&#xa;    boolean[] canEdit = new boolean [] {&#xa;        false, false, false, false, false, false, false, false, false, false, false, false&#xa;    };&#xa;    public boolean isCellEditable(int rowIndex, int columnIndex) {&#xa;        return canEdit [columnIndex];&#xa;    }&#xa;});&#xa;// Hide the ID column from view (optional, but good for internal IDs)&#xa;jTable1.getColumnModel().getColumn(11).setMinWidth(0);&#xa;jTable1.getColumnModel().getColumn(11).setMaxWidth(0);&#xa;jTable1.getColumnModel().getColumn(11).setWidth(0" type="code"/>
                         </Property>
                         <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
-                          <TableColumnModel selectionModel="0">
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                              <Title/>
-                              <Editor/>
-                              <Renderer/>
-                            </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                              <Title/>
-                              <Editor/>
-                              <Renderer/>
-                            </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                              <Title/>
-                              <Editor/>
-                              <Renderer/>
-                            </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                              <Title/>
-                              <Editor/>
-                              <Renderer/>
-                            </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                              <Title/>
-                              <Editor/>
-                              <Renderer/>
-                            </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                              <Title/>
-                              <Editor/>
-                              <Renderer/>
-                            </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                              <Title/>
-                              <Editor/>
-                              <Renderer/>
-                            </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                              <Title/>
-                              <Editor/>
-                              <Renderer/>
-                            </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                              <Title/>
-                              <Editor/>
-                              <Renderer/>
-                            </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                              <Title/>
-                              <Editor/>
-                              <Renderer/>
-                            </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                              <Title/>
-                              <Editor/>
-                              <Renderer/>
-                            </Column>
-                          </TableColumnModel>
+                          <TableColumnModel selectionModel="0"/>
                         </Property>
                         <Property name="opaque" type="boolean" value="false"/>
                         <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
@@ -342,9 +286,9 @@
                             </Constraint>
                           </Constraints>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="jTextField2">
+                        <Component class="javax.swing.JTextField" name="classNameTextfield">
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField2ActionPerformed"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="classNameTextfieldActionPerformed"/>
                           </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -362,14 +306,14 @@
                             </Constraint>
                           </Constraints>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="jTextField3">
+                        <Component class="javax.swing.JTextField" name="addressTextfield">
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                               <AbsoluteConstraints x="90" y="70" width="140" height="-1"/>
                             </Constraint>
                           </Constraints>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="jTextField5">
+                        <Component class="javax.swing.JTextField" name="contactTextfield">
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                               <AbsoluteConstraints x="90" y="120" width="140" height="-1"/>
@@ -416,7 +360,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                                      <Component id="jTextFieldTotalBill" min="-2" pref="153" max="-2" attributes="0"/>
+                                      <Component id="totalBillTextfield" min="-2" pref="153" max="-2" attributes="0"/>
                                       <EmptySpace pref="39" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
@@ -425,17 +369,14 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jTextFieldTotalBill" min="-2" max="-2" attributes="0"/>
+                                      <Component id="totalBillTextfield" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace pref="62" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
                           </Layout>
                           <SubComponents>
-                            <Component class="javax.swing.JTextField" name="jTextFieldTotalBill">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="jTextField14"/>
-                              </Properties>
+                            <Component class="javax.swing.JTextField" name="totalBillTextfield">
                             </Component>
                           </SubComponents>
                         </Container>
@@ -449,7 +390,10 @@
                             </Constraint>
                           </Constraints>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="jTextField4">
+                        <Component class="javax.swing.JTextField" name="emailTextfield">
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="emailTextfieldActionPerformed"/>
+                          </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                               <AbsoluteConstraints x="90" y="100" width="140" height="-1"/>
@@ -707,9 +651,9 @@
                                 </Constraint>
                               </Constraints>
                             </Component>
-                            <Component class="javax.swing.JTextField" name="jTextField6">
+                            <Component class="javax.swing.JTextField" name="petNameTextfield">
                               <Events>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField6ActionPerformed"/>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="petNameTextfieldActionPerformed"/>
                               </Events>
                               <Constraints>
                                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -717,14 +661,14 @@
                                 </Constraint>
                               </Constraints>
                             </Component>
-                            <Component class="javax.swing.JTextField" name="jTextField7">
+                            <Component class="javax.swing.JTextField" name="speciesTextField">
                               <Constraints>
                                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                                   <AbsoluteConstraints x="90" y="140" width="130" height="-1"/>
                                 </Constraint>
                               </Constraints>
                             </Component>
-                            <Component class="javax.swing.JTextField" name="jTextField8">
+                            <Component class="javax.swing.JTextField" name="breedTextField">
                               <Constraints>
                                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                                   <AbsoluteConstraints x="90" y="170" width="130" height="-1"/>
@@ -772,7 +716,7 @@
                                     </Constraint>
                                   </Constraints>
                                 </Component>
-                                <Component class="javax.swing.JTextField" name="jTextField12">
+                                <Component class="javax.swing.JTextField" name="assistantTextfield">
                                   <Constraints>
                                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                                       <AbsoluteConstraints x="295" y="112" width="101" height="-1"/>
@@ -796,22 +740,37 @@
                                   </Properties>
                                   <Constraints>
                                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                                      <AbsoluteConstraints x="16" y="26" width="400" height="80"/>
+                                      <AbsoluteConstraints x="16" y="26" width="400" height="70"/>
                                     </Constraint>
                                   </Constraints>
 
                                   <Layout>
                                     <DimensionLayout dim="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <EmptySpace min="0" pref="398" max="32767" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="updateServicesTextfield" min="-2" pref="367" max="-2" attributes="0"/>
+                                              <EmptySpace pref="25" max="32767" attributes="0"/>
+                                          </Group>
                                       </Group>
                                     </DimensionLayout>
                                     <DimensionLayout dim="1">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <EmptySpace min="0" pref="78" max="32767" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="updateServicesTextfield" pref="56" max="32767" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
                                     </DimensionLayout>
                                   </Layout>
+                                  <SubComponents>
+                                    <Component class="javax.swing.JTextField" name="updateServicesTextfield">
+                                      <Events>
+                                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateServicesTextfieldActionPerformed"/>
+                                      </Events>
+                                    </Component>
+                                  </SubComponents>
                                 </Container>
                               </SubComponents>
                             </Container>
